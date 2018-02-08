@@ -10,6 +10,7 @@ soup = BeautifulSoup(html, 'html.parser')
 # searching by tag
 all_list_items = soup.find_all('li')
 all_divs = soup.find_all('div')
+#all_images = soup.find_all('img')
 
 # searching by class
 all_goodbye_elements = soup.find_all(class_='goodbye') #class must have an underscore since it is a reserved word in python
@@ -58,7 +59,21 @@ the_hello_element = soup.find(id='hello-list')
 #print('------')
 
 
-img_tag = soup.find('img') #accesses attributes of a tag by treating the tag as a dictionary
-print('The img source:')
-print(img_tag['src'])
+img_tag = soup.find('img') #accesses attributes (something inside the tag) of a tag by treating the tag as a dictionary
+#print('The img source:')
+#print(img_tag['src'])
+#print('------')
+
+
+goodbye_list_items = all_goodbye_elements[0].find_all('li')
+print("These are the elements of the goodbye list:")
+for li in goodbye_list_items:
+    print(li.string)
+print('------')
+print("The image width is:")
+print(img_tag['width'])
+print('------')
+print("The url that the a-tag points to is:")
+a_tag = soup.find('a')
+print(a_tag['href'])
 print('------')
